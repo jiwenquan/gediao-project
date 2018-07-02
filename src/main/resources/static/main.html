@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>学生管理系统</title>
+    <!--基础样式表-->
+    <link rel="stylesheet" href="../css/reset.css" />
+    <link rel="stylesheet" href="../css/bootstrap.css" />
+    <link rel="stylesheet" href="../css/datatables.css" />
+    <link rel="stylesheet" href="../css/slide.css" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/projectstory.css"/>
+    <link rel="stylesheet" href="../css/bootstrap-datepicker.css" />
+    <link rel="stylesheet" href="../css/bootstrap-select.css"/>
+    <link rel="stylesheet" href="../css/edopConfirm.css" />
+    <!--基础样式表-->
+    <!--基础JS控制-->
+    <script type="text/javascript" src="../js/jquery.js"></script>
+    <script type="text/javascript" src="../js/bootstrap.js"></script>
+    <script type="text/javascript" src="../js/bootstrap-select.js"></script>
+    <script type="text/javascript" src="../js/datatables.js"></script>
+    <script type="text/javascript" src="../js/dataTables.treeGrid.js"></script>
+    <script type="text/javascript" src="../js/web-storage-cache.js"></script>
+    <script type="text/javascript" src="../js/util.js"></script>
+    <script type="text/javascript" src="../js/control.js"></script>
+    <!--基础JS控制-->
+</head>
+<script type="text/javascript">
+    $(function () {
+        $('#childDiv').load("projectoverview.html?" + Math.random(), function () {
+        });
+        $('#childDiv').show();
+    })
+
+    function clickJob(item) {
+        $('.br-title ul li').eq(item).addClass('br-title-active').siblings().removeClass('br-title-active');
+        var fileName = "";
+        if (item == 0) {
+            pageName = '0';
+            fileName = 'projectoverview.html';
+        }
+        if (item == 1) {
+            pageName = '1';
+            fileName = 'projectteam.html';
+        }
+        if (item == 2) {
+            pageName = '2';
+            fileName = 'projectmilestone.html';
+        }
+        if (item == 3) {
+            pageName = '3';
+            fileName = 'project-version.html';
+        }
+        if (item == 4) {
+            pageName = '4';
+            fileName = 'projectplan.html';
+        }
+        if (item == 5) {
+            pageName = '5';
+            fileName = 'projecttask.html';
+        }
+        if (item == 6) {
+            pageName = '6';
+            fileName = 'projectdocumentation.html';
+        }
+        if (item == 7) {
+            pageName = '7';
+            fileName = 'projectmeetings.html';
+        }
+        if (item == 8) {
+            pageName = '8';
+            fileName = 'projectpaper.html';
+        }
+        $('#childDiv').load(fileName + "?" + Math.random(), function () {
+            if (item == 0) {
+            }
+            if (item == 1) {
+            }
+            if (item == 2) {
+            }
+            if (item == 3) {
+            }
+            if (item == 4) {
+            }
+            if (item == 5) {
+            }
+            if (item == 6) {
+            }
+            if (item == 7) {
+            }
+            if (item == 8) {
+            }
+        });
+    }
+
+</script>
+
+<body>
+<div id="header" class="topheader"></div>
+<!--占位header fix的高度，可以不修改下面的css-->
+<div style="height:60px"></div>
+<script>
+    $("#header").load("header.html");
+</script>
+<div class="laybox" style="background-color: #f0f0f0;height: 60px;">
+    <div class="br-title">
+        <ul>
+            <li class="br-title-active"><a href="javascript:clickJob(0);">项目概况</a></li>
+            <li><a href="javascript:clickJob(1);">项目团队</a></li>
+            <li><a href="javascript:clickJob(2);">项目里程碑</a></li>
+            <li><a href="javascript:clickJob(3);">项目版本</a></li>
+            <li><a href="javascript:clickJob(4);">项目计划</a></li>
+            <li><a href="javascript:clickJob(5);">项目任务</a></li>
+            <li><a href="javascript:clickJob(6);">项目文档</a></li>
+            <li><a href="javascript:clickJob(7);">项目会议</a></li>
+            <li><a href="javascript:clickJob(8);">项目报告</a></li>
+        </ul>
+    </div>
+</div>
+<div class="bgbox pdt20">
+    <div class="laybox">
+        <div class="br-tabbox" id="childDiv">
+
+        </div>
+
+    </div>
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,157 @@
+
+    <div class="laybox bluebg">
+        <div class="c-head">
+        	<div class="ch1 left"><a href="/"><img src="../images/logo_u1181.png" /></a></div>
+            <div class="ch3 left">
+            	<div class="dashname2" id="projectULPraent">
+            		<div class="dashname">
+            			<a class="dashname" style="text-overflow:ellipsis;overflow: hidden;white-space: nowrap;" href="javascript:showOrClosePro()" id="projectNameHeader">
+            				学生管理平台
+            			</a>
+            		</div>
+                </div>
+            </div>
+            <div class="ch4 left">
+            	<ul id="topmenuul">
+                	<li><a id="student" href="../module/student/student.html">学生管理</a></li>
+                    <li><a id="teacher"  href="../module/teacher/teacher.html">教师管理</a></li>
+                    <li><a id="examination"  href="../module/examination/examination.html">考试管理</a></li>
+					<li><a id="system"  href="../module/system/system.html">系统管理</a></li>
+                </ul>
+            </div>
+            <div class="ch2 right">
+            	<div class="message left">
+                	<a href="/home/main.html">
+                    	<span style="display:none">6</span>
+                    </a>    
+                </div>
+                <div class="ct-name left">
+                	<div class="ct-hover left">
+                        <p id="userName">Admin</p>
+                        <span><img src="../images/headimgleft.png" /></span>
+                        <div class="ctbox" style="display: none;">
+                            <ul>
+                            	
+                                <li><a href="javascript:logout();" class="ct-active" >退出</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <span class="left headimg"><img src="../images/headimg.png" /></span>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        var scolling = false;
+        var userInfo=JSON.parse(sessionStorage.getItem("userInfo"));
+
+        if(userInfo){
+            $('#userName').html(userInfo.userName);
+        }
+        var projectInfo = JSON.parse(sessionStorage.getItem("projectInfo"));
+        if(projectInfo && projectInfo.almAppName){
+            $('#projectNameHeader').html(projectInfo.almAppName);
+            $('#projectNameHeader')[0].title=projectInfo.almAppName;
+        }
+
+        //dashboard hover
+        $('.ct-hover').hover(function(){
+            $(this).children('.ctbox').show();
+        },function(){
+            $(this).children('.ctbox').hide();
+        });
+
+        function logout(){
+            sessionStorage.removeItem("userInfo");
+            sessionStorage.removeItem("projectInfo");
+            edop.ajax({
+                type: 'GET',
+                url: '/sms/login/doLogout',
+                data: 'r='+Math.random(),
+                complete: function (data) {
+                    window.location.href="/login.html";
+                }
+            });
+        }
+
+        //header添加选中样式
+        var url = window.location.href.split("?")[0].split("/").pop();
+        var pageId = (url && url.split("."))? url.split(".")[0]:url;
+        $("#"+pageId).addClass("ch4-active").siblings().removeClass('ch4-active');
+
+        var pageNo=1;
+        //添加数字化企业云平台下拉框。
+        function showOrClosePro(){
+            if($("#projectUL").is(":hidden")){
+                if(pageNo==1){
+                    headGetProjectList();
+                }
+                $("#projectUL").show();
+            }else{
+                $("#projectUL").hide();
+            }
+        }
+        //查找项目数据
+        function headGetProjectList(){
+
+            if(pageNo!=-1){
+                $("#projectUL").mLoading({'mask':true});
+// 			$("#projectUL").mLoading("show");
+                $.ajax({
+                    type: 'POST',
+                    url: '/adp/project/getProjectList',
+                    data: JSON.stringify({ "pageNo":pageNo,"pageSize":10 }),
+                    dataType: 'json',
+                    contentType: 'application/json',
+                    success: function (data) {
+                        $("#projectUL").mLoading("hide");
+                        var newHtml="";
+                        if(data.list.length > 0){
+                            for(var i=0;i<data.list.length;i++){
+                                var dataJsonStr = JSON.stringify(data.list[i]);
+                                newHtml +="<li style='border-bottom: 1px solid #e6e6e6;' onclick='gotoProject(this)'><span style='display:none'>"+dataJsonStr+"</span><a title='"+data.list[i].almAppName+"'style='border-radius:1px;text-overflow:ellipsis;overflow: hidden;white-space: nowrap;' href='javascript:void(0);'>"+data.list[i].almAppName+"</a></li>";
+                            }
+                            $("#projectUL").append(newHtml);
+                            pageNo ++;
+                        }else{
+                            pageNo = -1;
+                        }
+                        scolling = false;
+                    },
+                    error: function (xhr, type) {
+                        scolling = false;
+                        $("#projectUL").mLoading("hide");
+                        console.log('下拉框项目信息数据加载失败');
+                    }
+                });
+            }
+        }
+        $(function(){
+
+            $("#projectUL").scroll(function () {
+                if(!scolling && $("#projectUL").scrollTop() >= ($("#projectUL")[0].scrollHeight - $("#projectUL").height())){
+                    scolling=true;
+                    headGetProjectList();
+                }
+            });
+            $(document).mouseup(function(e){
+                var _con = $('#projectULPraent');   // 设置目标区域
+                if(!_con.is(e.target) && _con.has(e.target).length === 0){ // Mark 1
+                    if(!$("#projectUL").is(":hidden")){
+                        $("#projectUL").hide();
+                    }
+                }
+            });
+        })
+
+        function gotoProject(liDom){
+            var projectInfo = $(liDom).find("span").html();
+            if(projectInfo){
+                sessionStorage.setItem("projectInfo",projectInfo);
+                edop.paramcache.set('almAppShortName', JSON.parse(projectInfo).almAppShortName);
+                window.location.reload();
+            }
+        }
+    </script>
+

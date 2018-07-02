@@ -1,0 +1,33 @@
+@charset "utf-8";
+/* CSS Document */
+.style-label1{
+	width:110px;
+}
+.style-label2{
+	width:100px;
+}
+.style-label-modal{
+	width:80px;
+}
+.style-div{
+	width:500px;
+}
+.style-color{
+	padding-top:10px;
+	color:#ff0000;
+	font-size:20px;
+}
+em{
+	color:#f00;
+}
+span.error{
+	color:#F00; padding:0 6px;
+}
+.container{
+	position: relative;
+}
+.status-div{
+	position: absolute;
+	top: 10px;
+	right: 150px;
+}
