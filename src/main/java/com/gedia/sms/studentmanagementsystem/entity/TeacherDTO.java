@@ -1,35 +1,46 @@
 package com.gedia.sms.studentmanagementsystem.entity;
 
-import java.io.Serializable;
 import java.util.Date;
 
 /**
- * 用户
+ * 老师
  *
  * @author jiwenquan
- * @create 2018/6/28 17:26
+ * @create 2018/6/28 11:20
  */
-public class User implements Serializable {
+public class TeacherDTO {
     /**
      * 主键id
      */
     private String id;
     /**
-     * 用户名
+     * 姓名
      */
-    private String userName;
+    private String name;
+    /**
+     * 编号
+     */
+    private String staffNum;
     /**
      * 密码
      */
     private String password;
     /**
+     * 职称
+     */
+    private String title;
+    /**
+     * 电话
+     */
+    private String phoneNum;
+    /**
+     * 邮箱
+     */
+    private String email;
+    /**
      * 备注
      */
     private String remark;
-    /**
-     * 是否启用
-     */
-    private Boolean flag;
     private Date created;
     private Date updated;
     private String createUser;
@@ -43,12 +54,20 @@ public class User implements Serializable {
         this.id = id;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getName() {
+        return name;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setName(String name) {
+        name = name;
+    }
+
+    public String getStaffNum() {
+        return staffNum;
+    }
+
+    public void setStaffNum(String staffNum) {
+        this.staffNum = staffNum;
     }
 
     public String getPassword() {
@@ -59,20 +78,36 @@ public class User implements Serializable {
         this.password = password;
     }
 
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getPhoneNum() {
+        return phoneNum;
+    }
+
+    public void setPhoneNum(String phoneNum) {
+        this.phoneNum = phoneNum;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public String getRemark() {
         return remark;
     }
 
     public void setRemark(String remark) {
         this.remark = remark;
-    }
-
-    public Boolean getFlag() {
-        return flag;
-    }
-
-    public void setFlag(Boolean flag) {
-        this.flag = flag;
     }
 
     public Date getCreated() {

@@ -3,36 +3,36 @@ package com.gedia.sms.studentmanagementsystem.entity;
 import java.util.Date;
 
 /**
- * 成绩
+ * 学生实体
  *
  * @author jiwenquan
- * @create 2018/6/28 11:33
+ * @create 2018/6/28 11:19
  */
-public class Achievement {
+public class StudentDTO {
     /**
      * 主键id
      */
     private String id;
     /**
-     * 考试
+     * 学号
      */
-    private String examination;
+    private String studentNum;
     /**
-     * 科目
+     * 密码
      */
-    private String subject;
+    private String password;
     /**
-     * 学生
+     * 姓名
      */
-    private String student;
-    /**
-     * 成绩（分数）
-     */
-    private Double achievement;
+    private String name;
     /**
      * 年级
      */
     private String grade;
+    /**
+     * 备注
+     */
+    private String remark;
     private Date created;
     private Date updated;
     private String createUser;
@@ -46,36 +46,28 @@ public class Achievement {
         this.id = id;
     }
 
-    public String getExamination() {
-        return examination;
+    public String getStudentNum() {
+        return studentNum;
     }
 
-    public void setExamination(String examination) {
-        this.examination = examination;
+    public void setStudentNum(String studentNum) {
+        studentNum = studentNum;
     }
 
-    public String getSubject() {
-        return subject;
+    public String getPassword() {
+        return password;
     }
 
-    public void setSubject(String subject) {
-        this.subject = subject;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public String getStudent() {
-        return student;
+    public String getName() {
+        return name;
     }
 
-    public void setStudent(String student) {
-        this.student = student;
-    }
-
-    public Double getAchievement() {
-        return achievement;
-    }
-
-    public void setAchievement(Double achievement) {
-        this.achievement = achievement;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getGrade() {
@@ -84,6 +76,14 @@ public class Achievement {
 
     public void setGrade(String grade) {
         this.grade = grade;
+    }
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
     }
 
     public Date getCreated() {

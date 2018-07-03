@@ -3,25 +3,24 @@ package com.gedia.sms.studentmanagementsystem.entity;
 import java.util.Date;
 
 /**
- * 年级
+ * 考试
  *
  * @author jiwenquan
- * @create 2018/6/28 12:50
+ * @create 2018/6/28 12:49
  */
-public class Grade {
-
+public class ExaminationDTO {
     /**
      * 主键id
      */
     private String id;
     /**
-     * 年级名称
+     * 考试概要
      */
-    private String gradeName;
+    private String summary;
     /**
-     * 备注
+     * 描述
      */
-    private String remark;
+    private String description;
     private Date created;
     private Date updated;
     private String createUser;

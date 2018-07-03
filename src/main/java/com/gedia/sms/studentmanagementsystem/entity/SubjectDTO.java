@@ -3,20 +3,20 @@ package com.gedia.sms.studentmanagementsystem.entity;
 import java.util.Date;
 
 /**
- * 班级
+ * 科目
  *
  * @author jiwenquan
- * @create 2018/6/28 13:41
+ * @create 2018/6/28 12:49
  */
-public class Class {
+public class SubjectDTO {
     /**
      * 主键id
      */
     private String id;
     /**
-     * 班级编号
+     * 科目名称
      */
-    private String classNum;
+    private String subjectName;
     /**
      * 备注
      */
@@ -34,12 +34,12 @@ public class Class {
         this.id = id;
     }
 
-    public String getClassNum() {
-        return classNum;
+    public String getSubjectName() {
+        return subjectName;
     }
 
-    public void setClassNum(String classNum) {
-        this.classNum = classNum;
+    public void setSubjectName(String subjectName) {
+        this.subjectName = subjectName;
     }
 
     public String getRemark() {

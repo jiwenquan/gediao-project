@@ -3,36 +3,36 @@ package com.gedia.sms.studentmanagementsystem.entity;
 import java.util.Date;
 
 /**
- * 学生实体
+ * 成绩
  *
  * @author jiwenquan
- * @create 2018/6/28 11:19
+ * @create 2018/6/28 11:33
  */
-public class Student {
+public class AchievementDTO {
     /**
      * 主键id
      */
     private String id;
     /**
-     * 学号
+     * 考试
      */
-    private String studentNum;
+    private String examination;
     /**
-     * 密码
+     * 科目
      */
-    private String password;
+    private String subject;
     /**
-     * 姓名
+     * 学生
      */
-    private String name;
+    private String student;
+    /**
+     * 成绩（分数）
+     */
+    private Double achievement;
     /**
      * 年级
      */
     private String grade;
-    /**
-     * 备注
-     */
-    private String remark;
     private Date created;
     private Date updated;
     private String createUser;
@@ -46,28 +46,36 @@ public class Student {
         this.id = id;
     }
 
-    public String getStudentNum() {
-        return studentNum;
+    public String getExamination() {
+        return examination;
     }
 
-    public void setStudentNum(String studentNum) {
-        studentNum = studentNum;
+    public void setExamination(String examination) {
+        this.examination = examination;
     }
 
-    public String getPassword() {
-        return password;
+    public String getSubject() {
+        return subject;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setSubject(String subject) {
+        this.subject = subject;
     }
 
-    public String getName() {
-        return name;
+    public String getStudent() {
+        return student;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setStudent(String student) {
+        this.student = student;
+    }
+
+    public Double getAchievement() {
+        return achievement;
+    }
+
+    public void setAchievement(Double achievement) {
+        this.achievement = achievement;
     }
 
     public String getGrade() {
@@ -76,14 +84,6 @@ public class Student {
 
     public void setGrade(String grade) {
         this.grade = grade;
-    }
-
-    public String getRemark() {
-        return remark;
-    }
-
-    public void setRemark(String remark) {
-        this.remark = remark;
     }
 
     public Date getCreated() {

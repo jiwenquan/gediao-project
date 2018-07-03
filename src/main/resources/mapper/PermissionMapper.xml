@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gedia.sms.studentmanagementsystem.dao.PermissionDao" >
+  <resultMap id="BaseResultMap" type="com.gedia.sms.studentmanagementsystem.entity.PermissionDTO" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="permission_name" property="permissionName" jdbcType="VARCHAR" />
+    <result column="url" property="url" jdbcType="VARCHAR" />
+    <result column="permission_code" property="permissionCode" jdbcType="VARCHAR" />
+    <result column="is_shiro_ctrl" property="isShiroCtrl" jdbcType="CHAR" />
+    <result column="is_access_unlimit" property="isAccessUnlimit" jdbcType="CHAR" />
+    <result column="created" property="created" jdbcType="DATE" />
+    <result column="updated" property="updated" jdbcType="DATE" />
+  </resultMap>
+
+  <sql id="Base_Column_List" >
+    id,
+    permission_name,
+    url,
+    permission_code,
+    is_shiro_ctrl,
+    is_access_unlimit,
+    created, updated
+  </sql>
+
+  <select id="queryAllPermission" resultMap="BaseResultMap" >
+    select 
+    <include refid="Base_Column_List" />
+    from permission
+  </select>
+
+  <select id="findPermissionByRole" parameterType="com.gedia.sms.studentmanagementsystem.entity.RoleDTO"
+          resultMap="BaseResultMap" >
+    select
+    <include refid="Base_Column_List" />
+    from permission
+    where id IN(
+                select permission_id
+                from role_permission
+                where role_code = #{roleCode,jdbcType=VARCHAR}
+                )
+    and is_access_unlimit = '0'
+  </select>
+</mapper>

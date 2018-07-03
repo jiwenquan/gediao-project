@@ -1,36 +1,34 @@
 package com.gedia.sms.studentmanagementsystem.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
- * 老师
+ * 用户
  *
  * @author jiwenquan
- * @create 2018/6/28 11:20
+ * @create 2018/6/28 17:26
  */
-public class Teacher {
+public class UserDTO implements Serializable {
     /**
      * 主键id
      */
     private String id;
     /**
-     * 姓名
+     *
+     * 账户
      */
-    private String name;
+    private String account;
     /**
-     * 编号
+     * 用户名
      */
-    private String staffNum;
+    private String userName;
     /**
      * 密码
      */
     private String password;
     /**
-     * 职称
-     */
-    private String title;
-    /**
-     * 电话
+     * 手机号码
      */
     private String phoneNum;
     /**
@@ -38,13 +36,23 @@ public class Teacher {
      */
     private String email;
     /**
+     * 生日
+     */
+    private String birthday;
+    /**
+     * 用户角色
+     */
+    private String userRole;
+    /**
      * 备注
      */
     private String remark;
+    /**
+     * 状态
+     */
+    private String status;
     private Date created;
     private Date updated;
-    private String createUser;
-    private String updateUser;
 
     public String getId() {
         return id;
@@ -54,20 +62,20 @@ public class Teacher {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getAccount() {
+        return account;
     }
 
-    public void setName(String name) {
-        name = name;
+    public void setAccount(String account) {
+        this.account = account;
     }
 
-    public String getStaffNum() {
-        return staffNum;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setStaffNum(String staffNum) {
-        this.staffNum = staffNum;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getPassword() {
@@ -76,14 +84,6 @@ public class Teacher {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
     }
 
     public String getPhoneNum() {
@@ -102,12 +102,36 @@ public class Teacher {
         this.email = email;
     }
 
+    public String getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(String birthday) {
+        this.birthday = birthday;
+    }
+
+    public String getUserRole() {
+        return userRole;
+    }
+
+    public void setUserRole(String userRole) {
+        this.userRole = userRole;
+    }
+
     public String getRemark() {
         return remark;
     }
 
     public void setRemark(String remark) {
         this.remark = remark;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public Date getCreated() {
@@ -124,21 +148,5 @@ public class Teacher {
 
     public void setUpdated(Date updated) {
         this.updated = updated;
-    }
-
-    public String getCreateUser() {
-        return createUser;
-    }
-
-    public void setCreateUser(String createUser) {
-        this.createUser = createUser;
-    }
-
-    public String getUpdateUser() {
-        return updateUser;
-    }
-
-    public void setUpdateUser(String updateUser) {
-        this.updateUser = updateUser;
     }
 }
